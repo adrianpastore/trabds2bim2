@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}  
+
+<form action="/ideia/salvar" method="POST">
+  {% if ideia %}
+  <h1>Alterando ideia</h1> 
+  <div class="form-group col-md-2" style ="display: none;">
+      <label class="col-form-label">cod</label>
+      <input type="text" class="form-control" value="{{ideia.cod}}" name="cod" id="cod">
+  </div>
+  <div class="form-group col-md-2" style ="display: none;">
+      <label class="col-form-label">dthora</label>
+      <input type="text" class="form-control" value="{{ideia.datahoraatualizacao}}" name="dthoraatt" id="dthoraatt">
+  </div>
+  <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Titulo</span>
+      <input type="text" class="form-control" placeholder="{{ideia.titulo}}" name="titulo" id="titulo" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Descrição</span>
+      <input type="text" class="form-control" placeholder="{{ideia.descricao}}" name="descricao" id="descricao" aria-describedby="basic-addon1">
+    </div>
+    <input type="submit" value="Enviar">
+{%else%}
+  <h1>Inserindo ideia</h1>
+  <div class="input-group" style ="display: none;">
+      <label class="col-form-label">dthora</label>
+      <input type="text" class="form-control" name="dthoraatt" id="dthoraatt">
+  </div>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Titulo</span>
+        <input type="text" class="form-control" placeholder="Nova ideia" name="titulo" id="titulo" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Descrição</span>
+        <input type="text" class="form-control" placeholder="uma nova ideia no banco" name="descricao" id="descricao" aria-describedby="basic-addon1">
+      </div>
+      <input type="submit" value="Enviar">
+</form>
+{% endif %}
+{% endblock %}

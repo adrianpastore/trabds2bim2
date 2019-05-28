@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Listar{% endblock %}
+{% block content %}  
+	
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th> Codigo</th>
+			<th> Titulo </th>
+            <th> Data e Hora de Atualização </th>
+			<th></th>		
+		</tr>
+	</thead>
+	<tbody>
+		{%for i in ideias%}
+			<tr> 
+				<td>{{i.cod}}</td>
+				<td>{{i.titulo}}</td>
+				<td>{{i.datahoraatualizacao}}</td>
+                <td>
+					<a href="/ideia/buscar?cod={{i.cod}}"><button class="btn btn-dark" name="detalhes" type="submit" value= "{{i.codigo}}">Ver detalhes</button></a>
+				</td>
+			<tr>
+		{%endfor%}		
+	</tbody>
+</table>
+<a href="{{url_for('inserir')}}" class="btn btn-dark">Inserir uma nova ideia</a>
+
+{% endblock %}
+

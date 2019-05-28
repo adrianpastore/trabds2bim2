@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+<style>
+*{
+    text-align: center;
+}
+</style>
+
+{% block content %}  
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th>Codigo</th>
+			<th>Titulo</th> 
+			<th>Descrição</th>
+			<th>Codigo Usuario</th>
+			<th>Nome do Usuario</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr> 
+			<td>{{buscando._cod}}</td>
+			<td>{{buscando._titulo}}</td>
+			<td>{{buscando._descricao}}</td>
+			<td>{{buscando._usuario.cod}}</td>
+			<td>{{buscando._usuario.nome}}</td>
+			<td>
+				<a href="{{url_for('listar')}}"><button class="btn btn-dark" name="detalhes" type="submit">Voltar</button></a>
+				{% if session['codU'] == buscando.usuario.cod %}
+					<a href="/ideia/excluir?cod={{buscando.cod}}"><button  class="btn btn-dark" name="excluir" type="submit" value= "{{buscando.codigo}}">Excluir</button></a>
+					<a href="/ideia/alterar?cod={{buscando.cod}}"><button class="btn btn-dark" name="alterar" type="submit" value= "{{buscando.codigo}}" >Alterar</button></a>
+				{% endif %}
+			</td>
+		</tr>	
+	</tbody>
+</table>
+{% endblock %}
